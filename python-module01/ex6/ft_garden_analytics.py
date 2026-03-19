@@ -115,7 +115,7 @@ class GardenManager:
         for plant in self.plants:
             print(f"- {plant.get_info()}")
 
-        print(f"Plants added: {self.plants_added}, "
+        print(f"\nPlants added: {self.plants_added}, "
               f"Total growth: {self.total_growth}cm")
 
         stats: dict[str, int] = self.GardenStats.count_plant_types(self.plants)
@@ -152,13 +152,11 @@ class GardenManager:
 
 def main() -> None:
     """Demonstrate the garden analytics platform."""
-    print("=== Garden Management System Demo ===")
+    print("=== Garden Management System Demo ===\n")
 
-    # Create garden managers
     alice_garden: GardenManager = GardenManager("Alice")
     bob_garden: GardenManager = GardenManager("Bob")
 
-    # Add plants of different types to Alice's garden
     oak: Plant = Plant("Oak Tree", 100)
     rose: FloweringPlant = FloweringPlant("Rose", 25, "red")
     sunflower: PrizeFlower = PrizeFlower("Sunflower", 50, "yellow", 10)
@@ -166,25 +164,20 @@ def main() -> None:
     alice_garden.add_plant(oak)
     alice_garden.add_plant(rose)
     alice_garden.add_plant(sunflower)
+    print()
 
-    # Grow all plants
     alice_garden.grow_all(1)
+    print()
 
-    # Print report
     alice_garden.get_report()
+    print()
 
-    # Static method demo
-    print(f"Height validation test: "
-          f"{GardenManager.validate_height(100)}")
+    bob_garden.plants.append(Plant("Fern", 46))
+    bob_garden.plants.append(FloweringPlant("Tulip", 46, "pink"))
 
-    # Bob's garden (scores: Alice 218, Bob 92)
-    bob_garden.add_plant(Plant("Fern", 46))
-    bob_garden.add_plant(FloweringPlant("Tulip", 46, "pink"))
-
+    print(f"Height validation test: {GardenManager.validate_height(100)}")
     print(f"Garden scores - Alice: {alice_garden.get_score()}, "
           f"Bob: {bob_garden.get_score()}")
-
-    # Class method demo
     print(f"Total gardens managed: {GardenManager.get_total_gardens()}")
 
 

@@ -29,7 +29,7 @@ def main() -> None:
     print("=== Plant Factory Output ===")
     for plant in plants:
         print(plant.display())
-    print(f"Total plants created: {len(plants)}")
+    print(f"\nTotal plants created: {len(plants)}")
 
 
 if __name__ == "__main__":

@@ -76,19 +76,16 @@ class Vegetable(Plant):
 
 def main() -> None:
     """Demonstrate different plant types."""
-    print("=== Garden Plant Types ===")
+    print("=== Garden Plant Types ===\n")
 
-    # Flowers
     rose: Flower = Flower("Rose", 25, 30, "red")
     print(rose.get_info())
-    print(rose.bloom())
+    print(rose.bloom(), "\n")
 
-    # Trees
     oak: Tree = Tree("Oak", 500, 1825, 50)
     print(oak.get_info())
-    print(oak.produce_shade())
+    print(oak.produce_shade(), "\n")
 
-    # Vegetables
     tomato: Vegetable = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
     print(tomato.get_info())
     print(tomato.get_nutrition())

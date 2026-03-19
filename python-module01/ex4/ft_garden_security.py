@@ -55,11 +55,11 @@ def main() -> None:
         print(f"Age updated: {plant.get_age()} days [OK]")
 
     # Invalid operation
-    print("Invalid operation attempted: height -5cm [REJECTED]")
+    print("\nInvalid operation attempted: height -5cm [REJECTED]")
     plant.set_height(-5)
 
     # Show current state
-    print(f"Current plant: {plant.get_name()} "
+    print(f"\nCurrent plant: {plant.get_name()} "
           f"({plant.get_height()}cm, {plant.get_age()} days)")
 
 
