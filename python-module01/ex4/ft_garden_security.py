@@ -1,49 +1,67 @@
-"""Garden security system"""
+#!/usr/bin/env python3
+"""Exercise 4: Garden Security System - Encapsulation and validation."""
 
 
 class SecurePlant:
-    """Protected data"""
+    """A plant with protected data and validation."""
 
     def __init__(self, name: str) -> None:
-        """Initialize a secure plant."""
-        self.name = name
-        self._height = 0
-        self._age = 0
-        print(f"Plant created: {name}")
+        """Initialize a secure plant with a name."""
+        self._name: str = name
+        self._height: int = 0
+        self._age: int = 0
+
+    def get_name(self) -> str:
+        """Return the plant's name."""
+        return self._name
 
     def get_height(self) -> int:
-        """return height."""
+        """Return the plant's height."""
         return self._height
 
     def get_age(self) -> int:
-        """return age"""
+        """Return the plant's age."""
         return self._age
 
-    def set_height(self, value: int) -> None:
-        """Error message if invalid height."""
-        if value < 0:
-            print(f"\nInvalid operation attempted: height {value}cm [REJECTED]")
+    def set_height(self, height: int) -> bool:
+        """Set height with validation. Returns True if successful."""
+        if height < 0:
             print("Security: Negative height rejected")
-        else:
-            self._height = value
-            print(f"Height updated: {value}cm [OK]")
+            return False
+        self._height = height
+        return True
 
-    def set_age(self, value: int) -> None:
-        """Error message if invalid age."""
-        if value < 0:
-            print(f"\nInvalid operation attempted: age {value} days [REJECTED]")
+    def set_age(self, age: int) -> bool:
+        """Set age with validation. Returns True if successful."""
+        if age < 0:
             print("Security: Negative age rejected")
-        else:
-            self._age = value
-            print(f"Age updated: {value} days [OK]")
+            return False
+        self._age = age
+        return True
+
+
+def main() -> None:
+    """Demonstrate the garden security system."""
+    print("=== Garden Security System ===")
+
+    plant: SecurePlant = SecurePlant("Rose")
+    print(f"Plant created: {plant.get_name()}")
+
+    # Valid operations
+    if plant.set_height(25):
+        print(f"Height updated: {plant.get_height()}cm [OK]")
+
+    if plant.set_age(30):
+        print(f"Age updated: {plant.get_age()} days [OK]")
+
+    # Invalid operation
+    print("Invalid operation attempted: height -5cm [REJECTED]")
+    plant.set_height(-5)
+
+    # Show current state
+    print(f"Current plant: {plant.get_name()} "
+          f"({plant.get_height()}cm, {plant.get_age()} days)")
 
 
 if __name__ == "__main__":
-    print("=== Garden Security System ===")
-    rose = SecurePlant("Rose")
-    rose.set_height(25)
-    rose.set_age(30)
-    rose.set_height(-5)
-    print(
-        f"\nCurrent plant: {rose.name} ({rose.get_height()}cm, {rose.get_age()} days)"
-    )
+    main()

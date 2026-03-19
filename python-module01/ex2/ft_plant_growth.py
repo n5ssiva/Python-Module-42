@@ -1,39 +1,46 @@
-"""Plant growth simulator."""
+#!/usr/bin/env python3
+"""Exercise 2: Plant Growth Simulator - Methods on classes."""
 
 
 class Plant:
-    """Represent a plant."""
+    """A plant that can grow and age over time."""
 
     def __init__(self, name: str, height: int, age: int) -> None:
-        """Initialize a plant."""
-        self.name = name
-        self.height = height
-        self._age = age
+        """Initialize a plant with name, height, and age."""
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
 
-    def grow(self) -> None:
-        """Increase plant height by 1cm."""
-        self.height += 1
+    def grow(self, amount: int = 1) -> None:
+        """Increase the plant's height by a given amount."""
+        self.height += amount
 
-    def age(self) -> None:
-        """Increase plant age by one day."""
-        self._age += 1
+    def age_plant(self, days: int = 1) -> None:
+        """Increase the plant's age by a given number of days."""
+        self.age += days
 
-    def get_info(self) -> None:
-        """Display plant information."""
-        print(f"{self.name}: {self.height}cm, {self._age} days old")
+    def get_info(self) -> str:
+        """Return a string with the current plant status."""
+        return f"{self.name}: {self.height}cm, {self.age} days old"
+
+
+def main() -> None:
+    """Simulate plant growth over a week."""
+    rose: Plant = Plant("Rose", 25, 30)
+    initial_height: int = rose.height
+
+    print("=== Day 1 ===")
+    print(rose.get_info())
+
+    # Simulate a week of growth (6 more days)
+    for _ in range(6):
+        rose.grow(1)
+        rose.age_plant(1)
+
+    print("=== Day 7 ===")
+    print(rose.get_info())
+    print(f"Growth this week: +{rose.height - initial_height}cm")
 
 
 if __name__ == "__main__":
-    rose = Plant("Rose", 25, 30)
-    sunflower = Plant("Sunflower", 80, 45)
-    cactus = Plant("Cactus", 15, 120)
-    i = 0
-    print("day 1:")
-    rose.get_info()
-    while i < 6:
-        rose.grow()
-        rose.age()
-        i += 1
-    print("day 7:")
-    rose.get_info()
-    print(f"Growth this week: +{i}cm")
+    main()

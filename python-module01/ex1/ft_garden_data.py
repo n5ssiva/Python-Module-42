@@ -1,21 +1,29 @@
-"""Garden data organizer with Plant class"""
+#!/usr/bin/env python3
+"""Exercise 1: Garden Data Organizer - Introduction to classes."""
 
 
 class Plant:
-    """Represents a plant"""
+    """A blueprint for any plant with its basic attributes."""
 
     def __init__(self, name: str, height: int, age: int) -> None:
-        """Initialize a plant with name, height and age"""
-        self.name = name
-        self.height = height
-        self.age = age
+        """Initialize a plant with name, height, and age."""
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
+
+
+def main() -> None:
+    """Create and display multiple plants."""
+    plants: list[Plant] = [
+        Plant("Rose", 25, 30),
+        Plant("Sunflower", 80, 45),
+        Plant("Cactus", 15, 120)
+    ]
+
+    print("=== Garden Plant Registry ===")
+    for plant in plants:
+        print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
 
 
 if __name__ == "__main__":
-    rose = Plant("Rose", 25, 30)
-    sunflower = Plant("Sunflower", 80, 45)
-    cactus = Plant("Cactus", 15, 120)
-    print("=== Garden Plant Registry ===")
-    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
-    print(f"{sunflower.name}: {sunflower.height}cm, {sunflower.age} days old")
-    print(f"{cactus.name}: {cactus.height}cm, {cactus.age} days old")
+    main()
