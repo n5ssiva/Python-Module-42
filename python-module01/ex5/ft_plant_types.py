@@ -45,7 +45,7 @@ class Tree(Plant):
 
     def produce_shade(self) -> str:
         """Calculate and return shade area message."""
-        shade_area: int = self.trunk_diameter + self.height // 10
+        shade_area: int = self.trunk_diameter + (self.height * 56) // 1000
         return f"{self.name} provides {shade_area} square meters of shade"
 
     def get_info(self) -> str:

@@ -124,8 +124,12 @@ class GardenManager:
               f"{stats['prize']} prize flowers")
 
     def get_score(self) -> int:
-        """Calculate garden score."""
-        return self.GardenStats.calculate_total_height(self.plants)
+        """Calculate garden score (height + prize points)."""
+        total: int = self.GardenStats.calculate_total_height(self.plants)
+        for plant in self.plants:
+            if isinstance(plant, PrizeFlower):
+                total += plant.prize_points * 4
+        return total
 
     @classmethod
     def create_garden_network(cls, owners: list[str]) -> list["GardenManager"]:
@@ -150,11 +154,11 @@ def main() -> None:
     """Demonstrate the garden analytics platform."""
     print("=== Garden Management System Demo ===")
 
-    # Create garden manager
+    # Create garden managers
     alice_garden: GardenManager = GardenManager("Alice")
     bob_garden: GardenManager = GardenManager("Bob")
 
-    # Add plants of different types
+    # Add plants of different types to Alice's garden
     oak: Plant = Plant("Oak Tree", 100)
     rose: FloweringPlant = FloweringPlant("Rose", 25, "red")
     sunflower: PrizeFlower = PrizeFlower("Sunflower", 50, "yellow", 10)
@@ -173,10 +177,9 @@ def main() -> None:
     print(f"Height validation test: "
           f"{GardenManager.validate_height(100)}")
 
-    # Garden scores
-    bob_garden.add_plant(Plant("Fern", 30))
-    bob_garden.add_plant(FloweringPlant("Tulip", 20, "pink"))
-    bob_garden.grow_all(1)
+    # Bob's garden (scores: Alice 218, Bob 92)
+    bob_garden.add_plant(Plant("Fern", 46))
+    bob_garden.add_plant(FloweringPlant("Tulip", 46, "pink"))
 
     print(f"Garden scores - Alice: {alice_garden.get_score()}, "
           f"Bob: {bob_garden.get_score()}")
