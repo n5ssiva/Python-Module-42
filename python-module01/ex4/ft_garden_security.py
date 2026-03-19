@@ -47,18 +47,15 @@ def main() -> None:
     plant: SecurePlant = SecurePlant("Rose")
     print(f"Plant created: {plant.get_name()}")
 
-    # Valid operations
     if plant.set_height(25):
         print(f"Height updated: {plant.get_height()}cm [OK]")
 
     if plant.set_age(30):
         print(f"Age updated: {plant.get_age()} days [OK]")
 
-    # Invalid operation
     print("\nInvalid operation attempted: height -5cm [REJECTED]")
     plant.set_height(-5)
 
-    # Show current state
     print(f"\nCurrent plant: {plant.get_name()} "
           f"({plant.get_height()}cm, {plant.get_age()} days)")
 

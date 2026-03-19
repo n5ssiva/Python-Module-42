@@ -32,7 +32,6 @@ def main() -> None:
     print("=== Day 1 ===")
     print(rose.get_info())
 
-    # Simulate a week of growth (6 more days)
     for _ in range(6):
         rose.grow(1)
         rose.age_plant(1)
