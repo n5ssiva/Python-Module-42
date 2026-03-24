@@ -1,36 +1,37 @@
-"""Module demonstrating custom exception hierarchies in a garden context."""
+"""Custom exception classes for garden-related errors."""
 
 
 class GardenError(Exception):
-    """Base class for all garden-related exceptions."""
+    """Base exception for garden problems."""
     pass
 
 
 class PlantError(GardenError):
-    """Exception raised for issues specifically related to plants."""
+    """Exception for plant-related issues."""
     pass
 
 
 class WaterError(GardenError):
-    """Exception raised for issues related to irrifation or water levels."""
+    """Exception for water/irrigation issues."""
     pass
 
 
 def test_custom_errors() -> None:
-    """Demonstrate how to raise and catch custom garden exceptions."""
-    print("=== Custom Garden Errors Demo ===\n")
-
+    """Demonstrate custom garden exceptions."""
+    print("=== Custom Garden Errors Demo ===")
+    print()
     print("Testing PlantError...")
     try:
         raise PlantError("The tomato plant is wilting!")
     except PlantError as e:
-        print(f"Caught PlantError: {e}\n")
+        print(f"Caught PlantError: {e}")
+    print()
     print("Testing WaterError...")
     try:
         raise WaterError("Not enough water in the tank!")
     except WaterError as e:
-        print(f"Caught WaterError: {e}\n")
-
+        print(f"Caught WaterError: {e}")
+    print()
     print("Testing catching all garden errors...")
     errors_to_test = [
         PlantError("The tomato plant is wilting!"),
@@ -40,8 +41,9 @@ def test_custom_errors() -> None:
         try:
             raise error
         except GardenError as e:
-            print(f"Caught a garden error : {e}")
-    print("\nAll custom error types work correctly!")
+            print(f"Caught a garden error: {e}")
+    print()
+    print("All custom error types work correctly!")
 
 
 if __name__ == "__main__":

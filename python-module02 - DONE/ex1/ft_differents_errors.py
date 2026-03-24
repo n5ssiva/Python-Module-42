@@ -1,5 +1,7 @@
+"""Different error types demonstration for garden operations."""
+
+
 def test_value_error() -> None:
-    """Attempt to convert an invalid string to an integer."""
     print("Testing ValueError...")
     try:
         int("abc")
@@ -8,36 +10,31 @@ def test_value_error() -> None:
 
 
 def test_zero_division_error() -> None:
-    """Attempt to divide a number by zero."""
     print("Testing ZeroDivisionError...")
     try:
         10 / 0
-    except ZeroDivisionError as e:
-        print(f"Caught ZeroDivisionError: {e}")
+    except ZeroDivisionError:
+        print("Caught ZeroDivisionError: division by zero")
 
 
 def test_file_not_found_error() -> None:
-    """Attempt to open a file that does not exist."""
     print("Testing FileNotFoundError...")
     try:
         open("missing.txt", "r")
     except FileNotFoundError:
-        print("Caught FileNotFoundError: No such file'missing.txt'")
+        print("Caught FileNotFoundError: No such file 'missing.txt'")
 
 
 def test_key_error() -> None:
-    """Attempt to access a non-existent key in a dictionary."""
     print("Testing KeyError...")
     try:
         garden = {"tomato": 5}
         _ = garden["missing_plant"]
     except KeyError:
-        # Respecting the specific output format provided
-        print(r"Caught KeyError: 'missing\_plant'")
+        print("Caught KeyError: 'missing_plant'")
 
 
 def test_multiple_errors() -> None:
-    """Catch multiple specific exceptions in a single block."""
     print("Testing multiple errors together...")
     try:
         int("abc")
@@ -46,18 +43,19 @@ def test_multiple_errors() -> None:
 
 
 def test_error_types() -> None:
-    """Execute all error test cases in sequence."""
-    print("=== Garden Error Types Demo ===\n")
+    """Main test function demonstrating all error types."""
+    print("=== Garden Error Types Demo ===")
+    print()
     test_value_error()
-    print("")
+    print()
     test_zero_division_error()
-    print("")
+    print()
     test_file_not_found_error()
-    print("")
+    print()
     test_key_error()
-    print("")
+    print()
     test_multiple_errors()
-    print("")
+    print()
     print("All error types tested successfully!")
 
 

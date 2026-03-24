@@ -1,10 +1,10 @@
-"""Function that check plants temperature"""
+"""Agricultural data validation pipeline for temperature readings."""
 
 
-def check_temperature(temp_str: str) -> float:
-    """Verify if the temp is valid for the plants (0-40°C)"""
+def check_temperature(temp_str: str) -> int | None:
+    """Validate temperature for plants (0-40°C)."""
     try:
-        temperature = float(temp_str)
+        temperature = int(temp_str)
         if temperature < 0:
             print(f"Error: {temperature}°C is too cold for plants (min 0°C)")
             return None
@@ -13,14 +13,13 @@ def check_temperature(temp_str: str) -> float:
             return None
         print(f"Temperature {temperature}°C is perfect for plants!")
         return temperature
-
     except ValueError:
-        print(f"Error '{temp_str}' is not a valid number")
+        print(f"Error: '{temp_str}' is not a valid number")
         return None
 
 
 def test_temperature_input() -> None:
-    """funtion that test check_temperature() with differents values"""
+    """Test check_temperature with various inputs."""
     print("=== Garden Temperature Checker ===")
     print("\nTesting temperature: 25")
     check_temperature("25")
