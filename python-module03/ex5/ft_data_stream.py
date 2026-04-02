@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-
+"""Exercise 5: Generator - Generetor system with event."""
 import random
 import typing
 
 names = ['alice', 'bob', 'charlie', 'dylan']
 actions = ['run', 'eat', 'sleep', 'climb', 'swim', 'grab', 'move', 'release']
+
 
 def gen_event() -> typing.Generator[tuple[str, str], None, None]:
     while True:
@@ -28,7 +29,7 @@ def main() -> None:
     gen = gen_event()
     for i in range(1000):
         event = next(gen)
-        print(f"Event {i}: {event[0]} did {event[1]}.")
+        print(f"Event {i}: Player {event[0]} did action {event[1]}")
 
     events_list = [next(gen) for _ in range(10)]
     print(f"Built list for 10 events: {events_list}")
