@@ -14,5 +14,8 @@ venv/
 env/
 ENV/
 
+# Vscode
+.vscode/
+
 # Others
 
