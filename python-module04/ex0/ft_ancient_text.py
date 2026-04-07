@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise 1: Ancient Text - open/read/close file."""
+"""Exercise 0: Ancient Text - open/read/close file."""
 import sys
 import typing
 

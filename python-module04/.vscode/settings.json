@@ -1,4 +1,5 @@
 {
+    "claudeCode.useTerminal": false,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#39383b",
         "activityBar.background": "#39383b",

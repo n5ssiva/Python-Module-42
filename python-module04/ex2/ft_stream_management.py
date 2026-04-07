@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Exercise 1: Archive Creation - modified and saving a file."""
+"""Exercise 2 : Stream Management."""
 import sys
 import typing
 
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print("Usage: ft_archive_creation.py <file>")
+        print("Usage: ft_stream_management <file>")
         return
 
     print("=== Cyber Archives Recovery & Preservation ===")
@@ -24,7 +24,8 @@ def main() -> None:
         print(f"File '{sys.argv[1]}' closed.\n")
 
     except OSError as e:
-        print(f"Error opening file '{sys.argv[1]}': {e}")
+        print(f"[STDERR] Error opening file '{sys.argv[1]}': {e}",
+              file=sys.stderr)
         return
 
     print("Transform data:")
@@ -39,7 +40,9 @@ def main() -> None:
         transformed_content += line + "\n"
     print("\n---")
 
-    save: str = input("Enter a new file name (or empty): ")
+    sys.stdout.write("Enter new file name (or empty): ")
+    sys.stdout.flush()
+    save: str = sys.stdin.readline().strip()
 
     if not save:
         print("Not saving data.")
@@ -51,7 +54,9 @@ def main() -> None:
             new_archive.close()
             print(f"Data saved in file '{save}'.")
         except OSError as e:
-            print(f"Error saving file '{save}': {e}")
+            print(f"[STDERR] Error opening file '{save}': {e}",
+                  file=sys.stderr)
+            print("Data not saved.")
 
 
 if __name__ == "__main__":
