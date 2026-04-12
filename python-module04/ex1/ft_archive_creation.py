@@ -39,7 +39,7 @@ def main() -> None:
         transformed_content += line + "\n"
     print("\n---")
 
-    save: str = input("Enter a new file name (or empty): ")
+    save: str = input("Enter new file name (or empty): ")
 
     if not save:
         print("Not saving data.")
