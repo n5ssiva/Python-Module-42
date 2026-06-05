@@ -17,6 +17,3 @@ ENV/
 
 # Vscode
 .vscode/
-
-# Others
-*.md
